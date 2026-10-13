@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-cream font-sans text-charcoal antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-tomato ring-offset-2 ring-offset-cream;
+  }
+
+  ::selection {
+    @apply bg-tomato text-cream;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-tomato text-cream shadow-soft hover:bg-tomato-600 hover:shadow-lift active:scale-[0.98];
+  }
+  .btn-dark {
+    @apply btn bg-charcoal text-cream hover:bg-charcoal-800 active:scale-[0.98];
+  }
+  .btn-outline {
+    @apply btn border border-charcoal/15 bg-white/60 text-charcoal backdrop-blur hover:border-charcoal hover:bg-white;
+  }
+  .btn-ghost {
+    @apply btn px-3 text-charcoal hover:bg-beige/70;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-charcoal-400 transition focus:border-tomato focus:outline-none focus:ring-2 focus:ring-tomato/20;
+  }
+  .input-error {
+    @apply border-tomato-600 focus:border-tomato-600 focus:ring-tomato-600/20;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-charcoal-800;
+  }
+  .field-error {
+    @apply mt-1.5 text-xs font-medium text-tomato-700;
+  }
+
+  .card {
+    @apply rounded-3xl bg-white shadow-soft;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-tomato;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
